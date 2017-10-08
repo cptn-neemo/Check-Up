@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.android.GameInformation">
+
+    <TextView
+        android:id="@+id/GAMEINFO_game_name_textView"
+        android:layout_width="347dp"
+        android:layout_height="58dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        android:gravity="center"
+        android:textSize="22sp"
+        android:background="@drawable/textview_margin"/>
+
+    <TextView
+        android:id="@+id/GAMEINFO_game_location"
+        android:layout_width="343dp"
+        android:layout_height="62dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GAMEINFO_game_name_textView"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:background="@drawable/textview_margin"/>
+
+    <TextView
+        android:id="@+id/GAMEINFO_number_of_players"
+        android:layout_width="346dp"
+        android:layout_height="61dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="11dp"
+        android:text="TextView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GAMEINFO_game_location"
+        android:layout_marginRight="8dp"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:background="@drawable/textview_margin"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/GAMEINFO_game_time"
+        android:layout_width="346dp"
+        android:layout_height="61dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/textview_margin"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="22sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GAMEINFO_number_of_players" />
+
+    <TextView
+        android:id="@+id/GAMEINFO_game_owner"
+        android:layout_width="346dp"
+        android:layout_height="61dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/textview_margin"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="22sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GAMEINFO_game_time" />
+
+    <Button
+        android:id="@+id/GAMEINFO_join_button"
+        android:layout_width="133dp"
+        android:layout_height="61dp"
+        android:layout_marginRight="125dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:hint="Join"
+        android:text="Join"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GAMEINFO_game_owner"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="1.0" />
+</android.support.constraint.ConstraintLayout>
