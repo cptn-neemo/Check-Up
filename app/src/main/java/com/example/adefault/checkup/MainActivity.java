@@ -161,4 +161,15 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         return gameList;
     }
 
+    public static String convertGameTime(String oldGameTime) {
+        String hour = oldGameTime.substring(0,oldGameTime.indexOf(':'));
+        int intHour = Integer.parseInt(hour);
+        if (intHour > 12) {
+            intHour -= 12;
+        }
+
+        String time = intHour + ":" + oldGameTime.substring(oldGameTime.indexOf(':') + 1);
+        return time;
+    }
+
 }

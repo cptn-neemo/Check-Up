@@ -78,20 +78,15 @@ public class GameCardAdapter extends RecyclerView.Adapter<GameCardAdapter.GameVi
                 break;
         }
 
-        String hour = game.getGameTime().substring(0,game.getGameTime().indexOf(':'));
-        int intHour = Integer.parseInt(hour);
-        if (intHour > 12) {
-            intHour -= 12;
-        }
-
-        String time = intHour + ":" + game.getGameTime().substring(game.getGameTime().indexOf(':') + 1);
+        String gameTime = game.getGameTime();
+        gameTime = MainActivity.convertGameTime(gameTime);
 
         if (game.getNumPlayers() >= 10) {
             mGameRef.child(game.getGameID()).removeValue();
         }
         else {
             infoText.setText(game.getGameName() + "\n" + "Number of Players: " + game.getNumPlayers() + "\n"
-                    + "Time: " + time);
+                    + "Time: " + gameTime);
             //imgView.setImageResource(R.drawable.sellery);
 
             switch (imageNumber) {

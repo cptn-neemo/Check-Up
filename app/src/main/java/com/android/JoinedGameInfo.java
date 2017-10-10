@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.adefault.checkup.Game;
+import com.example.adefault.checkup.MainActivity;
 import com.example.adefault.checkup.R;
 
 public class JoinedGameInfo extends AppCompatActivity {
@@ -33,10 +34,14 @@ public class JoinedGameInfo extends AppCompatActivity {
         int newNumPlayers = recievedGame.getNumPlayers() + 1;
 
         mGameOwnerTextView.setText("The owner is " + recievedGame.getOwnerOfGame() + ".");
-        mGameLocation.setText("This game will take place at " + recievedGame.getLocationOfGame() + ".");
+        mGameLocation.setText("This game will take place at the " + recievedGame.getLocationOfGame() + ".");
         mGameNameTextView.setText("You just joined " + recievedGame.getGameName());
         mNumPlayersTextView.setText("Number of players: " + newNumPlayers);
-        mTime.setText("The start time is " + recievedGame.getGameTime());
+
+        String gameTime = recievedGame.getGameTime();
+        gameTime = MainActivity.convertGameTime(gameTime);
+
+        mTime.setText("The start time is " + gameTime);
 
 
     }

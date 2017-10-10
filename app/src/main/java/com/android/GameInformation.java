@@ -42,7 +42,11 @@ public class GameInformation extends AppCompatActivity {
         mGameOwnerTextView.setText("Owner: " + recievedGame.getOwnerOfGame());
         mGameNameTextView.setText(recievedGame.getGameName());
         mNumPlayersTextView.setText("Number of players: "+recievedGame.getNumPlayers() + "");
-        mGameTime.setText("Start Time: " + recievedGame.getGameTime());
+
+        String gameTime = recievedGame.getGameTime();
+        gameTime = MainActivity.convertGameTime(gameTime);
+
+        mGameTime.setText("Start Time: " + gameTime);
         mGameLocation.setText("Location: " + recievedGame.getLocationOfGame());
     }
 
