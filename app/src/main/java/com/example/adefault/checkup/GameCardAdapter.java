@@ -49,17 +49,34 @@ public class GameCardAdapter extends RecyclerView.Adapter<GameCardAdapter.GameVi
     public void onBindViewHolder(GameViewHolder holder, int position) {
 
         ImageView imgView = holder.mGameDataImageView;
-        Button gameButton = holder.mGameDataButton;
         TextView infoText = holder.mGameInfoText;
+
+        int imageNumber;
 
         if (gameDataList == null) {
 
             infoText.setText("Empty");
-            Button button = holder.mGameDataButton;
-            button.setText("Empty");
             return;
         }
         Game game = gameDataList.get(position);
+
+        switch (game.getLocationOfGame()) {
+            case "Sellery":
+                imageNumber = 0;
+                break;
+            case "SERF":
+                imageNumber = 1;
+                break;
+            case "Natatorium":
+                imageNumber = 2;
+                break;
+            case "Shell":
+                imageNumber = 3;
+                break;
+            default:
+                imageNumber = -1;
+                break;
+        }
 
         String hour = game.getGameTime().substring(0,game.getGameTime().indexOf(':'));
         int intHour = Integer.parseInt(hour);
@@ -75,8 +92,24 @@ public class GameCardAdapter extends RecyclerView.Adapter<GameCardAdapter.GameVi
         else {
             infoText.setText(game.getGameName() + "\n" + "Number of Players: " + game.getNumPlayers() + "\n"
                     + "Time: " + time);
-            imgView.setImageResource(R.drawable.sellery);
-            gameButton.setText("Join Game");
+            //imgView.setImageResource(R.drawable.sellery);
+
+            switch (imageNumber) {
+                case 0:
+                    imgView.setImageResource(R.drawable.sellery);
+                    break;
+                case 1:
+                    imgView.setImageResource(R.drawable.serf);
+                    break;
+                case 2:
+                    imgView.setImageResource(R.drawable.nat);
+                    break;
+                case 3:
+                    imgView.setImageResource(R.drawable.shell);
+                    break;
+                default:
+                    imgView.setImageResource(R.drawable.shell);
+            }
         }
 
 
@@ -110,35 +143,33 @@ public class GameCardAdapter extends RecyclerView.Adapter<GameCardAdapter.GameVi
     public class GameViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView mGameDataImageView;
-        public Button mGameDataButton;
         public TextView mGameInfoText;
+
 
         public GameViewHolder(final View currentView) {
 
             super(currentView);
-
-            mGameDataButton = currentView.findViewById(R.id.card_button_more_info);
             mGameDataImageView = currentView.findViewById(R.id.card_image_view);
             mGameInfoText = currentView.findViewById(R.id.card_text_information);
 
-            mGameDataButton.setOnClickListener(new View.OnClickListener() {
+
+            currentView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
-                        //TODO: Add intent to new activitiy
-                        int position = getAdapterPosition();
-                        Game game = gameDataList.get(position);
-                        Intent goToAddGame = new Intent(getmGameDataContext(), GameInformation.class);
-                        goToAddGame.putExtra(Intent.EXTRA_COMPONENT_NAME, game);
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    Game game = gameDataList.get(position);
+                    Intent goToAddGame = new Intent(getmGameDataContext(), GameInformation.class);
+                    goToAddGame.putExtra(Intent.EXTRA_COMPONENT_NAME, game);
 
-                        currentView.getContext().startActivity(goToAddGame);
-
-
-                        Toast.makeText(getmGameDataContext(),"This works " + game.getGameName(), Toast.LENGTH_LONG).show();
-                    }
+                    currentView.getContext().startActivity(goToAddGame);
 
 
+                    Toast.makeText(getmGameDataContext(),"This works " + game.getGameName(), Toast.LENGTH_LONG).show();
+                }
             });
         }
+
+
 
     }
 

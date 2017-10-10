@@ -3,9 +3,8 @@
 
     <string-array name="spinner_add_game_items">
         <item>Sellery</item>
-        <item>Whitte</item>
         <item>Shell</item>
         <item>Natatorium</item>
-        <item>Serf</item>
+        <item>SERF</item>
     </string-array>
 </resources>

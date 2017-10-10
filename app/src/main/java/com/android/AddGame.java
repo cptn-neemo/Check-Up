@@ -27,7 +27,6 @@ import java.util.Calendar;
 
 public class AddGame extends AppCompatActivity {
 
-    private EditText mLocationEditText;
     private EditText mOwnerEditText;
     private EditText mGameNameEditText;
     private EditText mGameTime;
@@ -43,7 +42,6 @@ public class AddGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_game);
 
-        mLocationEditText = (EditText) findViewById(R.id.edit_text_location);
         mOwnerEditText = (EditText) findViewById(R.id.edit_text_owner);
         mGameNameEditText = (EditText) findViewById(R.id.edit_text_gameName);
         mSubmitGameButton = (Button) findViewById(R.id.submit_game_button);
@@ -70,7 +68,10 @@ public class AddGame extends AppCompatActivity {
                 mTimePicker = new TimePickerDialog(AddGame.this, R.style.DialogTheme, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        mGameTime.setText( selectedHour + ":" + selectedMinute);
+                        int hour = selectedHour;
+                        if (hour > 12)
+                            hour -= 12;
+                        mGameTime.setText(hour + ":" + selectedMinute);
                     }
                 }, hour, minute, DateFormat.is24HourFormat(getApplicationContext()));
                 mTimePicker.setTitle("Select Time");
@@ -81,7 +82,7 @@ public class AddGame extends AppCompatActivity {
     }
 
     private void addGame() {
-        String locationText = mLocationEditText.getText().toString();
+        String locationText = mLocationSpinner.getSelectedItem().toString();
         String ownerText = mOwnerEditText.getText().toString();
         String gameName = mGameNameEditText.getText().toString();
         String gameTime = mGameTime.getText().toString();
