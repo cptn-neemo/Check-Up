@@ -17,4 +17,9 @@
         <item name="contentPaddingRight">16dp</item>
         <item name="cardBackgroundColor">@color/colorPrimary</item>
     </style>
+
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">#dc0f0f</item>
+        <item name="colorControlNormal">#dc0f0f</item>
+    </style>
 </resources>

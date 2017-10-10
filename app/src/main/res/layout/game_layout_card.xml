@@ -11,7 +11,7 @@
         android:id="@+id/quote_card"
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        card_view:cardBackgroundColor="#6b2c2c"
+        card_view:cardBackgroundColor="#dad3d3"
         card_view:cardCornerRadius="5dp"
         card_view:cardElevation="0dp"
         card_view:cardUseCompatPadding="true"
@@ -27,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="fitXY"
+                android:elevation="20dp"
               />
 
             <TextView
@@ -38,7 +39,7 @@
                 android:layout_alignStart="@+id/card_button_more_info"
                 android:gravity="center"
                 android:textSize="22sp"
-                android:textColor="#eca2a2"/>
+                android:textColor="#e61616"/>
 
             <Button
                 android:id="@+id/card_button_more_info"

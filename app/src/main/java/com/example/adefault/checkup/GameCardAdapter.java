@@ -61,12 +61,20 @@ public class GameCardAdapter extends RecyclerView.Adapter<GameCardAdapter.GameVi
         }
         Game game = gameDataList.get(position);
 
+        String hour = game.getGameTime().substring(0,game.getGameTime().indexOf(':'));
+        int intHour = Integer.parseInt(hour);
+        if (intHour > 12) {
+            intHour -= 12;
+        }
+
+        String time = intHour + ":" + game.getGameTime().substring(game.getGameTime().indexOf(':') + 1);
+
         if (game.getNumPlayers() >= 10) {
             mGameRef.child(game.getGameID()).removeValue();
         }
         else {
             infoText.setText(game.getGameName() + "\n" + "Number of Players: " + game.getNumPlayers() + "\n"
-                    + "Time: " + game.getGameTime());
+                    + "Time: " + time);
             imgView.setImageResource(R.drawable.sellery);
             gameButton.setText("Join Game");
         }

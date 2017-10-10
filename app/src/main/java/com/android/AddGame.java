@@ -1,14 +1,17 @@
 package com.android;
 
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.adefault.checkup.Game;
@@ -20,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class AddGame extends AppCompatActivity {
 
@@ -54,6 +58,26 @@ public class AddGame extends AppCompatActivity {
             }
         });
 
+        mGameTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+
+                TimePickerDialog mTimePicker;
+
+                mTimePicker = new TimePickerDialog(AddGame.this, R.style.DialogTheme, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        mGameTime.setText( selectedHour + ":" + selectedMinute);
+                    }
+                }, hour, minute, DateFormat.is24HourFormat(getApplicationContext()));
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+            }
+        });
+
     }
 
     private void addGame() {
@@ -80,12 +104,6 @@ public class AddGame extends AppCompatActivity {
         }
 
     }
-
-
-
-
-
-
 
 
 }
