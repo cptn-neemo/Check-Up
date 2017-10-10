@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">Check Up</string>
 
-    <string-array name="spinner_items">
+    <string-array name="spinner_add_game_items">
         <item>Sellery</item>
         <item>Whitte</item>
+        <item>Shell</item>
+        <item>Natatorium</item>
+        <item>Serf</item>
     </string-array>
 </resources>

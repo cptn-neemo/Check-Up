@@ -5,8 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.adefault.checkup.Game;
@@ -25,6 +27,7 @@ public class AddGame extends AppCompatActivity {
     private EditText mOwnerEditText;
     private EditText mGameNameEditText;
     private EditText mGameTime;
+    private Spinner mLocationSpinner;
     private Button mSubmitGameButton;
     ArrayList<Game> gameList;
 
@@ -41,6 +44,8 @@ public class AddGame extends AppCompatActivity {
         mGameNameEditText = (EditText) findViewById(R.id.edit_text_gameName);
         mSubmitGameButton = (Button) findViewById(R.id.submit_game_button);
         mGameTime = (EditText) findViewById(R.id.ADDGAME_time);
+        mLocationSpinner = (Spinner) findViewById(R.id.AG_game_location_spinner);
+
 
         mSubmitGameButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -75,6 +80,7 @@ public class AddGame extends AppCompatActivity {
         }
 
     }
+
 
 
 

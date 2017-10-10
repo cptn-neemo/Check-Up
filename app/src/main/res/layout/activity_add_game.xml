@@ -36,9 +36,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit Game"
-        android:layout_below="@+id/edit_text_owner"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="58dp" />
+        android:layout_marginTop="18dp"
+        android:layout_below="@+id/AG_game_location_spinner"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/edit_text_location"
@@ -48,5 +48,14 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:hint="Location" />
+
+    <Spinner
+        android:id="@+id/AG_game_location_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ADDGAME_time"
+        android:entries="@array/spinner_add_game_items"/>
 
 </RelativeLayout>

@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +31,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements Serializable {
 
+    private ProgressBar progressBar;
     final DatabaseReference mDataBaseReference = FirebaseDatabase.getInstance().getReference();
 
     ArrayList<Game> gameList;
@@ -38,13 +41,16 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        gameList = createListOfGames(1);
+        progressBar = (ProgressBar) findViewById(R.id.main_activity_progress_bar);
+        gameList = new ArrayList<>();
 
         final RecyclerView rGameRecyclerView = (RecyclerView) findViewById(R.id.tv_games);
-        final GameAdapter gameAdapter = new GameAdapter(this, gameList);
+        //final GameAdapter gameAdapter = new GameAdapter(this, gameList);
+        //final GameCardAdapter gameCardAdapter = new GameCardAdapter(this, gameList);
 
-        rGameRecyclerView.setAdapter(gameAdapter);
-        rGameRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //rGameRecyclerView.setAdapter(gameAdapter);
+        //rGameRecyclerView.setAdapter(gameCardAdapter);
+        //rGameRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
 
@@ -53,18 +59,24 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         mDataBaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                if (gameList != null) {
+                    gameList.clear();
+                }
 
-                gameList.clear();
                 Log.d(ARRAY_LIST_KEY,"Game list is clear");
+                progressBar.setVisibility(View.VISIBLE);
 
                 for (DataSnapshot gameSnapchat : dataSnapshot.getChildren()) {
                     Game recievedGame = gameSnapchat.getValue(Game.class);
                     gameList.add(recievedGame);
                     Log.d("New game: ","A new game was read");
                 }
-
-                gameAdapter.notifyDataSetChanged();
-
+                final GameCardAdapter gameCardAdapter = new GameCardAdapter(getApplicationContext(), gameList);
+                rGameRecyclerView.setAdapter(gameCardAdapter);
+                //gameAdapter.notifyDataSetChanged();
+                gameCardAdapter.notifyDataSetChanged();
+                rGameRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                progressBar.setVisibility(View.INVISIBLE);
             }
 
             @Override
