@@ -24,8 +24,11 @@
         <activity
             android:name="com.android.GameInformation"
             android:parentActivityName=".MainActivity" />
-        <activity android:name="com.android.JoinedGameInfo"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name="com.android.JoinedGameInfo"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name="com.android.LogInActivity" />
+        <activity android:name="com.android.SignUpActivity"></activity>
     </application>
 
 </manifest>

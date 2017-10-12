@@ -1,9 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.android.LogInActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/login_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:text="Check Up"
+        android:textColor="@color/colorPrimary"
+        android:textSize="33sp"
+        android:gravity="center"
+        android:paddingTop="10dp"/>
+
+    <EditText
+        android:id="@+id/LI_email_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:layout_below="@+id/login_text_view"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/LI_password_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LI_email_field"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/LI_login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LI_password_field"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:width="150dp"
+        android:height="75dp"
+        android:text="Log in" />
+
+    <TextView
+        android:id="@+id/LI_signup_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LI_login_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:clickable="true"
+        android:text="If you don't have an account, sign up for one"
+        android:textColor="@color/colorPrimary" />
+</RelativeLayout>
